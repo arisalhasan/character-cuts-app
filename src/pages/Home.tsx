@@ -2,8 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Scissors, Sparkles, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/AnimatedBackground";
-import ScissorsAnimation from "@/components/ScissorsAnimation";
-import FloatingScissors from "@/components/FloatingScissors";
 import ServiceCard from "@/components/ServiceCard";
 import ReviewCard from "@/components/ReviewCard";
 
@@ -63,7 +61,6 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <AnimatedBackground />
-        <FloatingScissors />
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
           className="relative z-10 container mx-auto px-4 py-32 text-center"
@@ -142,7 +139,6 @@ const Home = () => {
               </Button>
             </motion.div>
           </motion.div>
-          <ScissorsAnimation />
         </motion.div>
       </section>
 
