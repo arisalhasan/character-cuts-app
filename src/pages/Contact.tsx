@@ -109,11 +109,11 @@ const Contact = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-foreground/80">Saturday</span>
-                  <span className="font-semibold text-primary">9:00 AM - 6:00 PM</span>
+                  <span className="font-semibold text-primary">10:00 AM - 5:00 PM</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-foreground/80">Sunday</span>
-                  <span className="font-semibold text-primary">10:00 AM - 4:00 PM</span>
+                  <span className="font-semibold text-primary">Closed</span>
                 </div>
               </div>
               <div className="flex items-center justify-center md:justify-end">

@@ -1,13 +1,18 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Scissors, Sparkles, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ScissorsAnimation from "@/components/ScissorsAnimation";
+import FloatingScissors from "@/components/FloatingScissors";
 import ServiceCard from "@/components/ServiceCard";
 import ReviewCard from "@/components/ReviewCard";
 
 const Home = () => {
   const freshaUrl = "https://www.fresha.com/book-now/palmo-lyh47nvs/services?lid=2760647&eid=4872806&share=true&pId=2670558";
+  
+  const { scrollYProgress } = useScroll();
+  const heroY = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   const services = [
     {
@@ -58,29 +63,87 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <AnimatedBackground />
-        <div className="relative z-10 container mx-auto px-4 py-32 text-center">
+        <FloatingScissors />
+        <motion.div 
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="relative z-10 container mx-auto px-4 py-32 text-center"
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 tracking-tight">
-              Cuts with character.
-            </h1>
-            <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Precision fades, classic shape-ups, and the kind of finish you notice every day.
-            </p>
-            <Button
-              variant="hero"
-              size="lg"
-              className="text-lg px-10 py-6 h-auto"
-              onClick={() => window.open(freshaUrl, "_blank", "noopener")}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="mb-6"
             >
-              Book on Fresha
-            </Button>
+              <motion.span 
+                className="inline-block text-primary font-display text-xl md:text-2xl mb-4"
+                animate={{ 
+                  textShadow: [
+                    "0 0 20px hsl(var(--primary) / 0.3)",
+                    "0 0 40px hsl(var(--primary) / 0.5)",
+                    "0 0 20px hsl(var(--primary) / 0.3)",
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                ✂️ Palmo Barbershop
+              </motion.span>
+            </motion.div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 tracking-tight">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="inline-block"
+              >
+                Cuts with
+              </motion.span>{" "}
+              <motion.span
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="inline-block text-primary"
+              >
+                character.
+              </motion.span>
+            </h1>
+            <motion.p 
+              className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              Precision fades, classic shape-ups, and the kind of finish you notice every day.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                variant="hero"
+                size="lg"
+                className="text-lg px-10 py-6 h-auto relative overflow-hidden group"
+                onClick={() => window.open(freshaUrl, "_blank", "noopener")}
+              >
+                <span className="relative z-10">Book on Fresha</span>
+                <motion.div
+                  className="absolute inset-0 bg-primary/20"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.5 }}
+                />
+              </Button>
+            </motion.div>
           </motion.div>
           <ScissorsAnimation />
-        </div>
+        </motion.div>
       </section>
 
       {/* Services Section */}

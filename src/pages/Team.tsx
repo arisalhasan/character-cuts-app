@@ -4,22 +4,16 @@ import BarberCard from "@/components/BarberCard";
 const Team = () => {
   const barbers = [
     {
-      name: "Marcus Williams",
+      name: "John",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop",
       specialties: ["Fades", "Classic Cuts", "Beard Design"],
-      bio: "With over 12 years of experience, Marcus specializes in precision fades and modern styling. His attention to detail and personable approach have made him a client favorite.",
+      bio: "With over 12 years of experience, John specializes in precision fades and modern styling. His attention to detail and personable approach have made him a client favorite.",
     },
     {
-      name: "James Carter",
+      name: "Mark",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1000&fit=crop",
       specialties: ["Shape-Ups", "Skin Fades", "Hot Towel"],
-      bio: "James brings a meticulous eye to every cut. Known for his razor-sharp lines and smooth fades, he takes pride in making every client look their absolute best.",
-    },
-    {
-      name: "Andre Thompson",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop",
-      specialties: ["Modern Cuts", "Texture Work", "Kids Cuts"],
-      bio: "Andre's versatility and creative approach set him apart. Whether you're after a bold new look or a timeless classic, he delivers with skill and precision.",
+      bio: "Mark brings a meticulous eye to every cut. Known for his razor-sharp lines and smooth fades, he takes pride in making every client look their absolute best.",
     },
   ];
 
@@ -38,7 +32,7 @@ const Team = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {barbers.map((barber, index) => (
             <BarberCard key={barber.name} {...barber} index={index} />
           ))}
