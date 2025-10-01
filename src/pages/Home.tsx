@@ -3,7 +3,6 @@ import { Scissors, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ReviewCard from "@/components/ReviewCard";
-import BarberCard from "@/components/BarberCard";
 
 const Home = () => {
   const freshaUrl = "https://www.fresha.com/book-now/palmo-lyh47nvs/services?lid=2760647&eid=4872806&share=true&pId=2670558";
@@ -11,21 +10,6 @@ const Home = () => {
   const { scrollYProgress } = useScroll();
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-
-  const barbers = [
-    {
-      name: "John",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop",
-      specialties: ["Fades", "Classic Cuts", "Beard Design"],
-      bio: "With over 12 years of experience, John specializes in precision fades and modern styling.",
-    },
-    {
-      name: "Mark",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1000&fit=crop",
-      specialties: ["Shape-Ups", "Skin Fades", "Hot Towel"],
-      bio: "Mark brings a meticulous eye to every cut. Known for his razor-sharp lines and smooth fades.",
-    },
-  ];
 
   const reviews = [
     {
@@ -180,29 +164,6 @@ const Home = () => {
                 <h3 className="text-2xl font-display font-bold mb-3">{pillar.title}</h3>
                 <p className="text-muted-foreground">{pillar.description}</p>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Meet Our Barbers Section */}
-      <section className="py-24 bg-muted/20 relative">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Meet Our Barbers</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Skilled professionals dedicated to your style
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {barbers.map((barber, index) => (
-              <BarberCard key={barber.name} {...barber} index={index} />
             ))}
           </div>
         </div>
