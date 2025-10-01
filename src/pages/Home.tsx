@@ -87,7 +87,7 @@ const Home = () => {
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                ✂️ Palmo Barbershop
+                Palmo Barbershop
               </motion.span>
             </motion.div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 tracking-tight">
