@@ -19,8 +19,15 @@ const BarberCard = ({ name, image, specialties, bio, index }: BarberCardProps) =
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
+      whileHover={{ 
+        y: -8,
+        rotateY: 5,
+        rotateX: 5,
+        transition: { duration: 0.3 }
+      }}
+      style={{ transformStyle: "preserve-3d", perspective: 1000 }}
     >
-      <Card className="overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group bg-card border-border/40">
+      <Card className="overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 group bg-card border-border/40 hover:border-primary/30 hover:bg-card/80 backdrop-blur-sm">
         <div className="aspect-[3/4] overflow-hidden bg-muted">
           <img
             src={image}
