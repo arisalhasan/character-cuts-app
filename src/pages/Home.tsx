@@ -1,8 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Scissors, Sparkles, Users, Award } from "lucide-react";
+import { Scissors, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/AnimatedBackground";
-import ServiceCard from "@/components/ServiceCard";
 import ReviewCard from "@/components/ReviewCard";
 
 const Home = () => {
@@ -11,27 +10,6 @@ const Home = () => {
   const { scrollYProgress } = useScroll();
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-
-  const services = [
-    {
-      icon: Scissors,
-      title: "Precision Cut",
-      description: "Classic and modern cuts tailored to your style",
-      price: "From $45",
-    },
-    {
-      icon: Sparkles,
-      title: "Skin Fade",
-      description: "Smooth, gradual fades with razor-sharp lines",
-      price: "From $50",
-    },
-    {
-      icon: Award,
-      title: "Beard Trim & Shape-Up",
-      description: "Sharp lines and sculpted definition",
-      price: "From $30",
-    },
-  ];
 
   const reviews = [
     {
@@ -140,29 +118,6 @@ const Home = () => {
             </motion.div>
           </motion.div>
         </motion.div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-24 bg-background relative">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Our Services</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Expert craftsmanship in every cut, fade, and trim
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {services.map((service, index) => (
-              <ServiceCard key={service.title} {...service} index={index} />
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* Why Choose Us Section */}
